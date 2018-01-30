@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <form action = "/" method = "POST" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+        <div>
+            <p>
+            {{ form.date.label }}
+            {{ form.date }}
+                 {% for message in form.date.errors %}
+                    {{ message }}
+                 {% endfor %}
+            </p>
+        </div>
+            <p>
+        <div>
+            <p>
+            {{ form.notename.label }}
+            {{ form.notename }}
+                {% for message in form.notename.errors %}
+                    {{ message }}
+                {% endfor %}
+            </p>
+        </div>
+        <div>
+            <p>
+            {{ form.notecontent.label }}
+            {{ form.notecontent }}
+                {% for message in form.notecontent.errors %}
+                    {{ message }}
+                {% endfor %}
+            </p>
+        </div>
+        <div class="submit">
+            <p>
+            {{ form.submit }}
+            </p>
+        </div>
+    </form>
+</head>
+
+<body></body>
+
+</html>
