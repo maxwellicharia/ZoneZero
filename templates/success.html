@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Success</title>
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+
+    Success
+
+{% endblock %}
+
+{% block content %}
 
     {% if create %}
     <h3>Note created Successfully!!</h3>
-    {% end if %}
+    {% endif %}
 
     {% if update %}
     <h3>Note Updated Successfully</h3>
-    {% end if %}
-</head>
-<body>
+    {% endif %}
 
-</body>
-</html>
+    <form action="{{ url_for('dash')}}">
+    <input class="btn btn-primary" type="submit" value="Back to dash" />
+    </form>
+
+{% endblock%}
