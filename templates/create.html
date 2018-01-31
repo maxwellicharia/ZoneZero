@@ -1,48 +1,27 @@
-<!DOCTYPE html>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-<html lang="en">
+{% block title %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-    <form action = "/" method = "POST" enctype="multipart/form-data">
-      {{ form.hidden_tag() }}
-        <div>
-            <p>
-            {{ form.date.label }}
-            {{ form.date }}
-                 {% for message in form.date.errors %}
-                    {{ message }}
-                 {% endfor %}
-            </p>
-        </div>
-            <p>
-        <div>
-            <p>
-            {{ form.notename.label }}
-            {{ form.notename }}
-                {% for message in form.notename.errors %}
-                    {{ message }}
-                {% endfor %}
-            </p>
-        </div>
-        <div>
-            <p>
-            {{ form.notecontent.label }}
-            {{ form.notecontent }}
-                {% for message in form.notecontent.errors %}
-                    {{ message }}
-                {% endfor %}
-            </p>
-        </div>
-        <div class="submit">
-            <p>
-            {{ form.submit }}
-            </p>
-        </div>
+ZoneZero
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Create New Note</h2>
+
+<div class="container">
+    <form method="POST" action="/create">
+        <d1>
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.notesubject) }}
+            {{ wtf.form_field(form.notename) }}
+            {{ wtf.form_field(form.notecontent) }}
+
+            <input class="btn btn-primary" type="submit" value="Create Note">
+        </d1>
     </form>
-</head>
+</div>
 
-<body></body>
-
-</html>
+{% endblock %}
