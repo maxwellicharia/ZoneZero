@@ -22,7 +22,8 @@ app.secret_key = "My Secret Key"
 @app.route('/', methods=['GET', 'POST'])
 # root route that the user will see after been authenticated in CAS
 def dash():
-    return render_template('dash.html')
+    if request.method == 'GET':
+        return render_template('dash.html')
 
 
 @app.route('/create', methods=['GET', 'POST'])
