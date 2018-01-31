@@ -1,13 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome!</title>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+
+ZoneZero
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Hey There Welcome to ZoneZero!</h1>
+
+<br/>
+
+<h2>Proceed in order to use ZoneZero</h2>
+
+<br/>
+<br/>
+<br/>
+
+<form action="{{ url_for('create')}}">
+    <input class="btn btn-primary" type="submit" value="Create Note" />
+</form>
+
+<br/>
+<br/>
+
+<form action="{{ url_for('update')}}">
+    <input class="btn btn-primary" type="submit" value="Update Notes" />
+</form>
+
+<br/>
+<br/>
+
+<form action="{{ url_for('view')}}">
+    <input class="btn btn-primary" type="submit" value="View Notes" />
+</form>
 
 
-
-</head>
-<body>
-
-</body>
-</html>
+{% endblock %}
