@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
+
 from form import Form
+from models import Models
+
 # import necessary modules for use
 
 app = Flask(__name__)
@@ -33,6 +36,8 @@ def create():
         if not form.validate_on_submit():  # making sure that the form is validated before submission
             return render_template('create.html', form=form)
         else:
+            createdb = Models()
+            createdb.create()
             return render_template('success.html', create=True)
 
 
