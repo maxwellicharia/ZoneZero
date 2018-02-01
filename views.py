@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
+from flask_cas import CAS, login_required
 
 from form import Form
 from models import Models
@@ -8,6 +9,19 @@ from models import Models
 
 app = Flask(__name__)
 Bootstrap(app)
+CAS(app)
+
+app.config['CAS_SERVER'] = 'maxwell-Lenovo-YOGA-510-14ISK:8080/cas/login'
+app.config['CAS_AFTER_LOGIN'] = 'dash'
+# with app.app_context():
+#     # MySQL configurations
+#     app.config['MYSQL_DATABASE_USER'] = 'notes'
+#     app.config['MYSQL_DATABASE_PASSWORD'] = 'Not3s_db'
+#     app.config['MYSQL_DATABASE_DB'] = 'notes'
+#     app.config['MYSQL_DATABASE_HOST'] = '10.55.17.80:3306'
+#     mysql = MySQL()
+#     mysql.init_app(app)
+
 # app.config.from_object(__name__)
 app.secret_key = "My Secret Key"
 
@@ -20,6 +34,7 @@ app.secret_key = "My Secret Key"
 
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 # root route that the user will see after been authenticated in CAS
 def dash():
     if request.method == 'GET':
