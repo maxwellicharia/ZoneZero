@@ -1,32 +1,35 @@
+import sqlite3 as lite
+
+
 class Models:
 
     def __init__(self):
-        pass
-
-    # with app.app.context()
-    #     mysql = MySQL()
-
+        self.con = lite.connect('notes.db')
+        self.cur = self.con.cursor()
 
     def create(self):
-        # self.cur.execute('CREATE TABLE Notes IF NOT EXISTS(NoteID INT AUTOINCREMENT, '
-        #                  'NoteSubject TEXT, NoteName TEXT, NoteContent TEXT)')
-        # self.cur.close()
+        with self.con:
+            self.cur.execute('CREATE TABLE Notes(NoteID INT, '
+                             'NoteSubject TEXT, NoteName TEXT, NoteContent TEXT)')
+            self.cur.close()
         pass
 
     def extract(self):
         pass
 
-    def insert(self, date, name, content):
-        # self.cur.execute('INSERT INTO Notes(NoteDate, NoteName, NoteContent) VALUES(?, ?, ?)', (date, name, content))
-        # self.cur.close()
+    def insert(self, subject, name, content):
+        with self.con:
+            self.cur.execute('INSERT INTO Notes(NoteSubject, NoteName, NoteContent) VALUES(?, ?, ?)',
+                             (subject, name, content))
+            self.cur.close()
         pass
 
-    def edit(self, date, name, content):
+    def edit(self, subject, name, content):
 
         pass
 
-    def delete(date, name):
+    def delete(subject, name):
         pass
 
-    def view(date, name):
+    def view(subject, name):
         pass
