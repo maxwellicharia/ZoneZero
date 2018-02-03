@@ -76,7 +76,13 @@ def create():
 @login_required
 @app.route('/update', methods=['GET', 'POST'])
 def update():
-    return render_template('update.html')
+    return render_template('update.html', update=True)
+
+
+@login_required
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    return render_template('update.html', delete=True)
 
 
 @login_required
