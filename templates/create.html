@@ -11,14 +11,15 @@ ZoneZero
 
 <div class="container">
 
+    <br/>
     <h2>Create New Note</h2>
 
     <form method="POST" action="/create">
         <dl>
             {{ form.csrf_token }}
-            {{ wtf.form_field(form.notesubject) }}
-            {{ wtf.form_field(form.notename) }}
-            {{ wtf.form_field(form.notecontent) }}
+            {{ wtf.form_field(form.note_subject) }}
+            {{ wtf.form_field(form.note_name) }}
+            {{ wtf.form_field(form.note_content) }}
         </dl>
         <input class="btn btn-success" type="submit" value="Create Note"/>
     </form>
@@ -26,16 +27,9 @@ ZoneZero
     <br/>
     <br/>
 
-    <form action="{{ url_for('dash')}}">
-        <input class="btn btn-primary" type="submit" value="Back"/>
-    </form>
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back</a>
 
-    <br/>
-    <br/>
-
-    <form action="{{ url_for('logout')}}">
-        <input class="btn btn-warning" type="submit" value="Logout"/>
-    </form>
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
 </div>
 {% endblock %}

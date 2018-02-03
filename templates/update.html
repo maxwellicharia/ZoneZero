@@ -8,11 +8,28 @@ Update | ZoneZero
 {% endblock %}
 
 {% block content %}
+
 <div class="container">
 
     {% if update %}
 
     <h1>Update notes on ZoneZero!</h1>
+
+    <br/>
+    <h4>Input The Note Id to edit</h4>
+
+    <form method="POST" action="{{ url_for('update')}}">
+        <dl>
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.id) }}
+        </dl>
+
+        <input class="btn btn-success" type="submit" value="Update Note"/>
+    </form>
+
+    <br/>
+
+    <a class="btn btn-primary" href="{{ url_for('view')}}" role="button">To View</a>
 
     {% endif %}
 
@@ -20,22 +37,31 @@ Update | ZoneZero
 
     <h1>Delete notes on ZoneZero!</h1>
 
+    <br/>
+    <h4>Input The Note ID from View to delete</h4>
+
+    <form method="POST" action="{{ url_for('delete')}}">
+        <dl>
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.id) }}
+        </dl>
+
+        <input class="btn btn-danger" type="submit" value="Delete Note"/>
+    </form>
+
+    <br/>
+
+    <a class="btn btn-primary" href="{{ url_for('view')}}" role="button">To View</a>
+
     {% endif %}
 
-
     <br/>
     <br/>
 
-    <form action="{{ url_for('dash')}}">
-        <input class="btn btn-primary" type="submit" value="Back"/>
-    </form>
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back</a>
 
-    <br/>
-    <br/>
-
-    <form action="{{ url_for('logout')}}">
-        <input class="btn btn-warning" type="submit" value="Logout"/>
-    </form>
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
 </div>
+
 {% endblock %}

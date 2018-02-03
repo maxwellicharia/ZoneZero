@@ -9,37 +9,32 @@ View | ZoneZero
 
 {% block content %}
 
-<h1>View notes on ZoneZero!</h1>
-
 <div class="container">
+
+    <br/>
+    <h1>View notes on ZoneZero!</h1>
 
     <table>
 
         {% for row in rows %}
+
         <tr>
             <td>row[0]</td>
             <td>row.NoteName</td>
             <td>row.NoteSubject</td>
             <td>row.NoteContent</td>
         </tr>
+
         {% endfor %}
 
     </table>
 
-
     <br/>
     <br/>
 
-    <form action="{{ url_for('dash')}}">
-        <input class="btn btn-primary" type="submit" value="Back"/>
-    </form>
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back</a>
 
-    <br/>
-    <br/>
-
-    <form action="{{ url_for('logout')}}">
-        <input class="btn btn-warning" type="submit" value="Logout"/>
-    </form>
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
 </div>
 

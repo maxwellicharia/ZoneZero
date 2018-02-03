@@ -8,6 +8,8 @@
 
 {% block content %}
 
+<div class="container">
+
     {% if create %}
     <h3>Note created Successfully!!</h3>
     {% endif %}
@@ -15,18 +17,23 @@
     {% if update %}
     <h3>Note Updated Successfully</h3>
     {% endif %}
-<br/>
-<br/>
-    <form action="{{ url_for('dash')}}">
-    <input class="btn btn-primary" type="submit" value="Back to dash" />
 
-    </form>
+    {% if delete %}
+    <h3>Note Deleted!</h3>
 
-<br/>
+    <br/>
 <br/>
 
-<form action="{{ url_for('logout')}}">
-    <input class="btn btn-warning" type="submit" value="Logout"/>
-</form>
+    <a class="btn btn-danger" href="{{ url_for('delete')}}" role="button">Delete More</a>
+
+    {% endif %}
+<br/>
+<br/>
+
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+</div>
 
 {% endblock%}
