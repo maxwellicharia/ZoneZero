@@ -1,12 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Zone Zero - Type as you learn</title>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-    <p>Zone Zero aids all!!</p>
-</head>
-<body>
+{% block title %}
 
-</body>
-</html>
+View | ZoneZero
+
+{% endblock %}
+
+{% block content %}
+
+<h1>View notes on ZoneZero!</h1>
+
+<div class="container">
+
+    <table>
+
+        {% for row in rows %}
+        <tr>
+            <td>row[0]</td>
+            <td>row.NoteName</td>
+            <td>row.NoteSubject</td>
+            <td>row.NoteContent</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+    <br/>
+    <br/>
+
+    <form action="{{ url_for('dash')}}">
+        <input class="btn btn-primary" type="submit" value="Back"/>
+    </form>
+
+    <br/>
+    <br/>
+
+    <form action="{{ url_for('logout')}}">
+        <input class="btn btn-warning" type="submit" value="Logout"/>
+    </form>
+
+</div>
+
+{% endblock %}
