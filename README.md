@@ -1,55 +1,55 @@
 # ZoneZero
-##Introduction.
-######ZoneZero is a python - Flask based web application.
+## Introduction.
+###### ZoneZero is a python - Flask based web application.
 
-######It utilises tomcat7 as a server.
+###### It utilises tomcat7 as a server.
 ZoneZero uses CAS [Flask-CAS] single sign on to authorise users.
 
-######ZoneZero is a note taking application that enables one to take notes, edit and view them.
+###### ZoneZero is a note taking application that enables one to take notes, edit and view them.
 
-##Getting Started.
-######Operating System - Linux
-######Python Version - 2.7.14
+## Getting Started.
+###### Operating System - Linux
+###### Python Version - 2.7.14
 
-###Open terminal/bash and input:
+### Open terminal/bash and input:
 
-####Prerequisites & Setup:
+#### Prerequisites & Setup:
+
+###### Installation of sqlite database that is used.
+    `sudo apt-get install sqlite3`
+        
+###### If not yet installed git.
     `sudo apt-get install git`
-
-######If not yet installed git.
 
 Otherwise,
 
     `git clone https://github.com/Maxwell-Icharia/ZoneZero`
 
-######Extract the application from the github repository.
+###### Extract the application from the github repository.
 
     `cd ZoneZero/`
 
-######Access the application and it's contents.
+###### Access the application and it's contents.
 [All the terminal commands are to be done while in this directory]
 
-####Application Setup:
+###### ZoneZero/
+
+#### Application Setup:
+
+###### Install pip in order to install various requirements needed by the application.
     `sudo apt-get install python-pip`
 
-######Install pip in order to install various requirements needed by the application.
-
+###### Use pip to install a virtual environment for running the application.
     `sudo pip install virtualenv`
 
-######Use pip to install a virtual environment for running the application.
-
+###### Create a new virtual environment that will be used to run the application without tampering with your system's various installed modules.
     `virtualenv venv`
 
-######Create a new virtual environment that will be used to run the application without tampering with your system's various installed modules.
-
+###### Activate your virtual environment.
     `. venv/bin/activate`
 
-######Activate your virtual environment.
-
+###### Install all the requirements needed to run the application found in the requirements.txt file.
     `pip install -r requirements.txt`
 
-######Install all the requirements needed to run the application found in the requirements.txt file.
-
+###### Run the application.
     `python run.py`
-
-######Run the application.
