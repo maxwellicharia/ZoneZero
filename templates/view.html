@@ -11,6 +11,8 @@ View | ZoneZero
 
 <div class="container">
 
+    {% if view %}
+
     <br/>
     <h1>View notes on ZoneZero!</h1>
 
@@ -30,7 +32,7 @@ View | ZoneZero
 
             </tr>
 
-        {% for row in rows %}
+            {% for row in rows %}
 
             <tr>
 
@@ -43,16 +45,18 @@ View | ZoneZero
                 <td class="active">{{ row[3] }}</td>
             </tr>
 
-        {% endfor %}
+            {% endfor %}
 
-    </table>
+        </table>
 
     </div>
 
     <br/>
     <br/>
 
-    <a class="btn btn-success" href="{{ url_for('update')}}" role="button">Update Notes</a>
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
+
+    <a class="btn btn-primary" href="{{ url_for('update')}}" role="button">Update Notes</a>
 
     <a class="btn btn-danger" href="{{ url_for('delete')}}" role="button">Delete Notes</a>
 
@@ -61,5 +65,24 @@ View | ZoneZero
     <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
 </div>
+
+{% endif %}
+
+{% if not_view %}
+
+<br/>
+
+<h3>No Note to View Add Note to View</h3>
+
+<br/>
+<br/>
+
+<a class="btn btn-success" href="{{ url_for('create')}}" role="button">Add Note</a>
+
+<a class="btn btn-warning" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+<a class="btn btn-danger" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+{% endif %}
 
 {% endblock %}

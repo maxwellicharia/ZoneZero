@@ -70,6 +70,19 @@ ZoneZero
 
     {% endif %}
 
+    {% if not_delete %}
+
+    <h2>Cannot Delete Notes, Create Note to delete</h2>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create Note</a>
+
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    {% endif %}
+
     <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
 </div>
