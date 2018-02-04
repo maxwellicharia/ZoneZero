@@ -14,23 +14,47 @@ View | ZoneZero
     <br/>
     <h1>View notes on ZoneZero!</h1>
 
-    <table>
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+
+            <tr>
+
+                <th class="info">Note ID</th>
+
+                <th class="info">Note Name</th>
+
+                <th class="info">Note Subject</th>
+
+                <th class="info">Note Content</th>
+
+            </tr>
 
         {% for row in rows %}
 
-        <tr>
-            <td>row[0]</td>
-            <td>row.NoteName</td>
-            <td>row.NoteSubject</td>
-            <td>row.NoteContent</td>
-        </tr>
+            <tr>
+
+                <td class="active">{{ row[0] }}</td>
+
+                <td class="active">{{ row[1] }}</td>
+
+                <td class="active">{{ row[2] }}</td>
+
+                <td class="active">{{ row[3] }}</td>
+            </tr>
 
         {% endfor %}
 
     </table>
 
+    </div>
+
     <br/>
     <br/>
+
+    <a class="btn btn-success" href="{{ url_for('update')}}" role="button">Update Notes</a>
+
+    <a class="btn btn-danger" href="{{ url_for('delete')}}" role="button">Delete Notes</a>
 
     <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back</a>
 
