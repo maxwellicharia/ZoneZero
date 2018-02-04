@@ -72,7 +72,10 @@ def create():
 @app.route('/view', methods=['GET', 'POST'])
 def view():
     db = Models()
-    return render_template('view.html', rows=db.view())
+    db.create()
+    if not db.view():
+        return render_template('view.html', not_view=True)
+    return render_template('view.html', rows=db.view(), view=True)
 
 
 @login_required
@@ -86,7 +89,6 @@ def update():
             return render_template('update.html', not_validate=True, form=form)
         else:
             db = Models()
-            db.create()
             num = request.form['id']
             name = request.form['note_name']
             subject = request.form['note_subject']
@@ -106,10 +108,21 @@ def delete():
             return render_template('update.html', form=form, delete=True)
         else:
             db = Models()
-            db.create()
+            if not db.view():
+                return render_template('success.html', not_delete=True)
             num = request.form['id']
             db.delete(num)
             return render_template('success.html', delete=True)
+
+
+@login_required
+@app.route('/not_delete', methods=['GET', 'POST'])
+def not_delete():
+    form = NoteID(request.form)
+    db = Models()
+    if not db.view():
+        return render_template('success.html', not_delete=True)
+    return render_template('update.html', delete=True, form=form)
 
 
 @login_required
