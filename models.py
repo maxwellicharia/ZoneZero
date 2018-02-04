@@ -1,12 +1,17 @@
 import sqlite3 as lite
 
 
+# importing database to be used
+# with self.con:  -  To use the connection while operating in the try except loop
+
+
 class Models:
 
     def __init__(self):
-        self.con = lite.connect('notes.db')
-        self.cur = self.con.cursor()
-        self.con.text_factory = bytes
+        # initialising local class variables
+        self.con = lite.connect('notes.db')  # create a connection to the db
+        self.cur = self.con.cursor()  # use the cursor object
+        self.con.text_factory = bytes  # output data as bytes
 
     def create(self):
         with self.con:

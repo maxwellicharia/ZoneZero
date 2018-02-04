@@ -1,6 +1,7 @@
 from views import app
-# import models
 
-app.run(debug=True)
+# importing app in views to run
+
+app.run(debug=False, host='0.0.0.0')
 # debug = True -- Development
 # debug = False -- Production

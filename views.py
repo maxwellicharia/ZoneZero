@@ -11,13 +11,17 @@ from models import Models
 
 app = Flask(__name__)
 Bootstrap(app)
-ssl._create_default_https_context = ssl._create_unverified_context
 CAS(app, '/cas')
+# initialising app with various classes
+ssl._create_default_https_context = ssl._create_unverified_context
+# ssl verification
 app.config['CAS_SERVER'] = 'https://127.0.0.1:8443/cas'
 app.config['CAS_AFTER_LOGIN'] = 'dash'
 app.config['CAS_ATTRIBUTES'] = ""
 app.secret_key = "My Secret Key"
 
+
+# app configurations for CAS
 # the methods GET and POST are used to determine if content is received or being submitted
 # render_template returns the HTML file that has been defined
 # in the templates folder that is automatically detected
