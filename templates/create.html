@@ -14,11 +14,19 @@ ZoneZero
     <br/>
     <h2>Create New Note</h2>
 
+    {% if not_validate %}
+
+    {% for message in form.errors %}
+    <div class="error">{{ message }}</div>
+    {% endfor %}
+
+    {% endif %}
+
     <form method="POST" action="/create">
         <dl>
             {{ form.csrf_token }}
-            {{ wtf.form_field(form.note_subject) }}
             {{ wtf.form_field(form.note_name) }}
+            {{ wtf.form_field(form.note_subject) }}
             {{ wtf.form_field(form.note_content) }}
         </dl>
         <input class="btn btn-success" type="submit" value="Create Note"/>
@@ -27,7 +35,7 @@ ZoneZero
     <br/>
     <br/>
 
-    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back</a>
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
 
     <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
 
