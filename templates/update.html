@@ -1,0 +1,90 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+
+ZoneZero
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if update %}
+
+    <h1>Update notes on ZoneZero!</h1>
+
+    <br/>
+
+    <h4>Input Note ID of the note you want to update</h4>
+
+    <br/>
+    {% if not_validate %}
+
+    {% for message in form.errors %}
+    <div class="error">{{ message }}</div>
+    {% endfor %}
+
+    {% endif %}
+
+    <form method="POST" action="/update">
+        <dl>
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.id) }}
+            {{ wtf.form_field(form.note_name) }}
+            {{ wtf.form_field(form.note_subject) }}
+            {{ wtf.form_field(form.note_content) }}
+        </dl>
+        <input class="btn btn-success" type="submit" value="Update Note"/>
+    </form>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-primary" href="{{ url_for('view')}}" role="button">To View</a>
+
+    {% endif %}
+
+    {% if delete %}
+
+    <h1>Delete notes on ZoneZero!</h1>
+
+    <br/>
+    <h4>Input The Note ID from View to delete</h4>
+
+    <form method="POST" action="{{ url_for('delete')}}">
+        <dl>
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.id) }}
+        </dl>
+
+        <input class="btn btn-danger" type="submit" value="Delete Note"/>
+    </form>
+
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('view')}}" role="button">To View</a>
+
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    {% endif %}
+
+    {% if not_delete %}
+
+    <h2>Cannot Delete Notes, Create Note to delete</h2>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create Note</a>
+
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    {% endif %}
+
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+</div>
+
+{% endblock %}

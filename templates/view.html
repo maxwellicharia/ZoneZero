@@ -1,0 +1,88 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+
+View | ZoneZero
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if view %}
+
+    <br/>
+    <h1>View notes on ZoneZero!</h1>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+
+            <tr>
+
+                <th class="info">Note ID</th>
+
+                <th class="info">Note Name</th>
+
+                <th class="info">Note Subject</th>
+
+                <th class="info">Note Content</th>
+
+            </tr>
+
+            {% for row in rows %}
+
+            <tr>
+
+                <td class="active">{{ row[0] }}</td>
+
+                <td class="active">{{ row[1] }}</td>
+
+                <td class="active">{{ row[2] }}</td>
+
+                <td class="active">{{ row[3] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
+
+    <a class="btn btn-primary" href="{{ url_for('update')}}" role="button">Update Notes</a>
+
+    <a class="btn btn-danger" href="{{ url_for('delete')}}" role="button">Delete Notes</a>
+
+    <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    <a class="btn btn-warning" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+</div>
+
+{% endif %}
+
+{% if not_view %}
+
+<br/>
+
+<h3>No Note to View Add Note to View</h3>
+
+<br/>
+<br/>
+
+<a class="btn btn-success" href="{{ url_for('create')}}" role="button">Add Note</a>
+
+<a class="btn btn-warning" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+<a class="btn btn-danger" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+{% endif %}
+
+{% endblock %}

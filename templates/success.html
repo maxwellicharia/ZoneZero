@@ -1,0 +1,66 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+
+    Success
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if create %}
+    <h3>Note created Successfully!!</h3>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
+
+    <a class="btn btn-primary" href="{{ url_for('view')}}" role="button">View Notes</a>
+
+    {% endif %}
+
+    {% if update %}
+
+    <h3>Note Updated Successfully</h3>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('view')}}" role="button">View Notes</a>
+
+    {% endif %}
+
+    {% if delete %}
+
+    <h3>Note Deleted!</h3>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('view')}}" role="button">View Notes</a>
+
+    <a class="btn btn-danger" href="{{ url_for('not_delete')}}" role="button">Delete More</a>
+
+    {% endif %}
+
+    {% if not_delete %}
+
+    <h3>Cannot Delete More Notes, Create Note to delete</h3>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create Note</a>
+
+    {% endif %}
+
+    <a class="btn btn-warning" href="{{ url_for('dash')}}" role="button">Back to dash</a>
+
+    <a class="btn btn-danger" href="{{ url_for('logout')}}" role="button">Logout</a>
+
+</div>
+
+{% endblock%}
