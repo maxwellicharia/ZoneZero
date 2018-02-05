@@ -22,13 +22,15 @@ View | ZoneZero
 
             <tr>
 
-                <th class="info">Note ID</th>
-
                 <th class="info">Note Name</th>
 
                 <th class="info">Note Subject</th>
 
                 <th class="info">Note Content</th>
+
+                <th class="info"></th>
+
+                <th class="info"></th>
 
             </tr>
 
@@ -36,13 +38,18 @@ View | ZoneZero
 
             <tr>
 
-                <td class="active">{{ row[0] }}</td>
-
                 <td class="active">{{ row[1] }}</td>
 
                 <td class="active">{{ row[2] }}</td>
 
                 <td class="active">{{ row[3] }}</td>
+
+                <td class="active"><a class="btn btn-primary" href="{{ url_for('update', id = row[0])}}" role="button">Update</a>
+                </td>
+
+                <td class="active"><a class="btn btn-danger" href="{{ url_for('delete', id = row[0])}}" role="button">Delete</a>
+                </td>
+
             </tr>
 
             {% endfor %}
@@ -55,10 +62,6 @@ View | ZoneZero
     <br/>
 
     <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
-
-    <a class="btn btn-primary" href="{{ url_for('update')}}" role="button">Update Notes</a>
-
-    <a class="btn btn-danger" href="{{ url_for('delete')}}" role="button">Delete Notes</a>
 
     <a class="btn btn-primary" href="{{ url_for('dash')}}" role="button">Back to dash</a>
 
