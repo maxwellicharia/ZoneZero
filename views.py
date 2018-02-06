@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from flask_cas import CAS, login_required
 
-from form import NoteCreate, NoteUpdate, NoteID
+from form import NoteCreate, NoteUpdate
 from models import Models
 
 # import necessary modules for use
@@ -83,17 +83,16 @@ def view():
 
 
 @login_required
-@app.route('/update', methods=['GET', 'POST'])
-def update():
+@app.route('/<int:num>/update', methods=['GET', 'POST'])
+def update(num):
     form = NoteUpdate(request.form)  # instantiating form to use the forms defined from the Form class in form.py
     if request.method == 'GET':
-        return render_template('update.html', update=True, form=form)
+        return render_template('view.html', update=True, form=form)
     else:
         if not form.validate_on_submit():  # making sure that the form is validated before submission
             return render_template('update.html', not_validate=True, form=form)
         else:
             db = Models()
-            num = request.form['id']
             name = request.form['note_name']
             subject = request.form['note_subject']
             content = request.form['note_content']
@@ -102,31 +101,14 @@ def update():
 
 
 @login_required
-@app.route('/delete', methods=['GET', 'POST'])
-def delete():
-    form = NoteID(request.form)
+@app.route('/delete/<int:num>', methods=['GET', 'POST'])
+def delete(num):
     if request.method == 'GET':
-        return render_template('update.html', form=form, delete=True)
-    else:
-        if not form.validate_on_submit():  # making sure that the form is validated before submission
-            return render_template('update.html', form=form, delete=True)
-        else:
-            db = Models()
-            if not db.view():
-                return render_template('success.html', not_delete=True)
-            num = request.form['id']
-            db.delete(num)
-            return render_template('success.html', delete=True)
-
-
-@login_required
-@app.route('/not_delete', methods=['GET', 'POST'])
-def not_delete():
-    form = NoteID(request.form)
-    db = Models()
-    if not db.view():
-        return render_template('success.html', not_delete=True)
-    return render_template('update.html', delete=True, form=form)
+        db = Models()
+        if not db.view():
+            return render_template('success.html', not_delete=True)
+        db.delete(str(num))
+        return render_template('success.html', delete=True)
 
 
 @login_required
