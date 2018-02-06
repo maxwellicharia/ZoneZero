@@ -44,6 +44,17 @@
 
     {% endif %}
 
+    {% if not_delete %}
+
+    <h3>No note to delete!</h3>
+
+    <br/>
+    <br/>
+
+    <a class="btn btn-success" href="{{ url_for('view')}}" role="button">Create New Note</a>
+
+    {% endif %}
+
     <a class="btn btn-warning" href="{{ url_for('dash')}}" role="button">Back to dash</a>
 
     <a class="btn btn-danger" href="{{ url_for('logout')}}" role="button">Logout</a>

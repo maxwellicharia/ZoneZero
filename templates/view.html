@@ -44,10 +44,16 @@ View | ZoneZero
 
                 <td class="active">{{ row[3] }}</td>
 
-                <td class="active"><a class="btn btn-primary" href="{{ url_for('update', num=row[0])}}" role="button">Update</a>
+                <td class="active">
+
+                    <a class="btn btn-primary" href="{{ url_for('update', num=row[0])}}" role="button">Update</a>
+
                 </td>
 
-                <td class="active"><a class="btn btn-danger" href="{{ url_for('delete', num=row[0])}}" role="button">Delete</a>
+                <td class="active">
+
+                    <a class="btn btn-danger" href="{{ url_for('delete', num=row[0])}}" role="button">Delete</a>
+
                 </td>
 
             </tr>
@@ -85,36 +91,6 @@ View | ZoneZero
 <a class="btn btn-warning" href="{{ url_for('dash')}}" role="button">Back to dash</a>
 
 <a class="btn btn-danger" href="{{ url_for('logout')}}" role="button">Logout</a>
-
-{% endif %}
-
-{% if update %}
-
-<h1>Update notes on ZoneZero!</h1>
-
-<br/>
-{% if not_validate %}
-
-{% for message in form.errors %}
-<div class="error">{{ message }}</div>
-{% endfor %}
-
-{% endif %}
-
-<form method="POST" action="{{url_for('update', num)}}">
-    <dl>
-        {{ form.csrf_token }}
-        {{ wtf.form_field(form.note_name) }}
-        {{ wtf.form_field(form.note_subject) }}
-        {{ wtf.form_field(form.note_content) }}
-    </dl>
-    <input class="btn btn-success" type="submit" value="Update Note"/>
-</form>
-
-<br/>
-<br/>
-
-<a class="btn btn-primary" href="{{ url_for('view')}}" role="button">To View</a>
 
 {% endif %}
 

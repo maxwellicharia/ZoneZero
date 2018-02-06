@@ -11,7 +11,7 @@ ZoneZero
 
 <div class="container">
 
-    {% if update %}
+    {% if update and num %}
 
     <h1>Update notes on ZoneZero!</h1>
 
@@ -19,12 +19,14 @@ ZoneZero
     {% if not_validate %}
 
     {% for message in form.errors %}
+
     <div class="error">{{ message }}</div>
+
     {% endfor %}
 
     {% endif %}
 
-    <form method="POST" action="{{url_for('update')}}">
+    <form method="POST" action="{{url_for('update', num=num)}}">
         <dl>
             {{ form.csrf_token }}
             {{ wtf.form_field(form.note_name) }}
