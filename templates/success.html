@@ -16,9 +16,9 @@
     <br/>
     <br/>
 
-    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
-
     <a class="btn btn-primary" href="{{ url_for('view')}}" role="button">View Notes</a>
+
+    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create New Note</a>
 
     {% endif %}
 
@@ -41,19 +41,6 @@
     <br/>
 
     <a class="btn btn-success" href="{{ url_for('view')}}" role="button">View Notes</a>
-
-    <a class="btn btn-danger" href="{{ url_for('not_delete')}}" role="button">Delete More</a>
-
-    {% endif %}
-
-    {% if not_delete %}
-
-    <h3>Cannot Delete More Notes, Create Note to delete</h3>
-
-    <br/>
-    <br/>
-
-    <a class="btn btn-success" href="{{ url_for('create')}}" role="button">Create Note</a>
 
     {% endif %}
 
